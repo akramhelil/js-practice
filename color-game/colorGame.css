@@ -16,5 +16,13 @@ body {
 }
 
 h1 {
-    color: white;
+    color: black;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+#topPart {
+    border: 2px solid yellow;
+    background: greenyellow;
+    padding: 10%;
 }
