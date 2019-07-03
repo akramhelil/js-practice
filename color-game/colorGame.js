@@ -58,6 +58,8 @@ reset.addEventListener('click', ev => {
     }
     h1.style.backgroundColor = "steelblue"
     messageDisplay.textContent = ''
+    reset.textContent = "new colors"
+
 })
 
 
