@@ -1,7 +1,6 @@
 // alert('connected')
-let colors = generateRandomColors(6)
-
-
+let numSquars = 6
+let colors = generateRandomColors(numSquars)
 
 let squares = document.querySelectorAll('.square')
 let colorDisplay = document.getElementById('colorDisplay')
@@ -12,11 +11,35 @@ let easy = document.querySelector('#easy')
 let hard = document.querySelector('#hard')
 
 
+
 easy.addEventListener('click', ev => {
-    alert('Easy Clciked')
+    hard.classList.remove('selected')
+    easy.classList.add('selected')
+    numSquars = 3
+    colors = generateRandomColors(numSquars)
+    pickedColor = pickColor()
+    colorDisplay.textContent = pickedColor
+
+    for (var i = 0; i < squares.length; i++) {
+        if (colors[i]) {
+            squares[i].style.backgroundColor = colors[i]
+        } else {
+            squares[i].style.display = "none"
+        }
+    }
 })
 hard.addEventListener('click', ev => {
-    alert('hard Clciked')
+    hard.classList.add('selected')
+    easy.classList.remove('selected')
+    numSquars = 6
+    colors = generateRandomColors(numSquars)
+    pickedColor = pickColor()
+    colorDisplay.textContent = pickedColor
+
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = colors[i]
+        squares[i].style.display = "block"
+    }
 })
 
 let pickedColor = pickColor()
@@ -24,7 +47,7 @@ let pickedColor = pickColor()
 
 reset.addEventListener('click', ev => {
     // genrate all new colors 
-    colors = generateRandomColors(6)
+    colors = generateRandomColors(numSquars)
     // picka a new coclor from array
     pickedColor = pickColor()
     // change color display to match picked color
