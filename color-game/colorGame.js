@@ -7,8 +7,34 @@ let squares = document.querySelectorAll('.square')
 let colorDisplay = document.getElementById('colorDisplay')
 let messageDisplay = document.querySelector('#message')
 let h1 = document.querySelector('h1')
+let reset = document.querySelector('#reset')
+let easy = document.querySelector('#easy')
+let hard = document.querySelector('#hard')
+
+
+easy.addEventListener('click', ev => {
+    alert('Easy Clciked')
+})
+hard.addEventListener('click', ev => {
+    alert('hard Clciked')
+})
 
 let pickedColor = pickColor()
+
+
+reset.addEventListener('click', ev => {
+    // genrate all new colors 
+    colors = generateRandomColors(6)
+    // picka a new coclor from array
+    pickedColor = pickColor()
+    // change color display to match picked color
+    colorDisplay.textContent = pickedColor
+    // change the color of the square
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = colors[i]
+    }
+    h1.style.backgroundColor = "#232323"
+})
 
 
 colorDisplay.textContent = pickedColor
@@ -25,6 +51,7 @@ for (let i = 0; i < squares.length; i++) {
             messageDisplay.textContent = 'Correct! You Won!' 
             changeColors(clickedColor)
             h1.style.backgroundColor = clickedColor
+            reset.textContent = 'Play Again?'
         } else {
             this.style.backgroundColor = '#232323'
             messageDisplay.textContent = 'Try Again'
